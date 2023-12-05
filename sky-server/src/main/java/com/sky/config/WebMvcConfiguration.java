@@ -41,6 +41,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
      * 通过knife4j生成接口文档
      * @return
      */
+//    bean来管理这个对象 knife4j 都是固定的代码 不需要手敲 写pom.xml中设置一下
     @Bean
     public Docket docket() {
         ApiInfo apiInfo = new ApiInfoBuilder()
@@ -51,6 +52,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
+//确定 扫描包的类 名字要一致
                 .apis(RequestHandlerSelectors.basePackage("com.sky.controller"))
                 .paths(PathSelectors.any())
                 .build();
@@ -62,6 +64,8 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
      * @param registry
      */
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        log.info("开始设置静态资源映射");
+        //什么叫静态资源映射
         registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }

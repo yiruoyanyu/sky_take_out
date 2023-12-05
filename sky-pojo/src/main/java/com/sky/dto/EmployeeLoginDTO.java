@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 @Data
 @ApiModel(description = "员工登录时传递的数据模型")
+//数据传输接口
 public class EmployeeLoginDTO implements Serializable {
 
     @ApiModelProperty("用户名")

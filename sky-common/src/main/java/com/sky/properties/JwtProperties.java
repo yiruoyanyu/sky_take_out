@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "sky.jwt")
+//从yml中找到相关的前缀 然后 导入进来 进行运算
 @Data
 public class JwtProperties {
 
